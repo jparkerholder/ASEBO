@@ -16,4 +16,4 @@ The only parameters you need to care about are:
   * h_dim = Typically I use 16 for Swimmer/Hopper, 32 for HalfCheetah/Walker2d, 64 for Ant, 128 for Humanoid (mixed success)
   * sigma/learning_rate = As with all ES algorithms, may need to be tuned.
 
-That is all!! Please let me know if you have questions: jh3764@columbia.edu
+That is all!! Please let me know if you have questions: jackph@robots.ox.ac.uk
