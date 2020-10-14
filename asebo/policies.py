@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.linalg import toeplitz
 import gym
-
+from copy import copy
 # Toeplitz policy from Choromanski (2018)
 # Can only have 2 layers
 
@@ -89,7 +89,7 @@ class LinearPolicy(object):
         self.w = self.weight_init(self.ob_dim * self.ac_dim, policy_params['zeros'])
         self.W = self.w.reshape(self.ac_dim, self.ob_dim)
 
-        self.params = self.w
+        self.params = copy(self.w)
         self.N = len(self.params)
     
     def weight_init(self, d, zeros):
@@ -103,11 +103,12 @@ class LinearPolicy(object):
     
     def update(self, vec):
         
-        self.params += vec
         
         self.w += vec
         self.W = self.w.reshape(self.ac_dim, self.ob_dim)
         
+        self.params = copy(self.w)
+
     def evaluate(self, X):
         
         X = X.reshape(X.size, 1)
